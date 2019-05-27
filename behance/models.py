@@ -8,6 +8,8 @@ from django.utils.translation import ugettext as _
 from wagtailmodelchooser import register_model_chooser
 from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 # Create your models here.
+
+from core.models import BasePage
 @register_model_chooser
 class BehanceProject(Orderable, models.Model):
     behance_id = models.PositiveIntegerField(editable=False)
@@ -94,11 +96,13 @@ class BehanceProjectListingPage(Page):
 
     template = 'behance/project_listing_page.html'
     max_count = 1
+    subpage_types = ['behance.BehanceProjectPage']
     class Meta:
         verbose_name = 'Behance Projects Listing Page'
         verbose_name_plural = 'Behance Projects Listing Pages'
 
-class BehanceProjectPage(Page):
+
+class BehanceProjectPage(BasePage):
 
     template = 'behance/project_page.html' 
     parent_page_types = ['behance.BehanceProjectListingPage']

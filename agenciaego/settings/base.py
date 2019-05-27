@@ -28,6 +28,11 @@ INSTALLED_APPS = [
     'search',
     'behance',
     'employees',
+    'blog',
+    'jobs',
+    'core',
+    'streams',
+    'menus',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',

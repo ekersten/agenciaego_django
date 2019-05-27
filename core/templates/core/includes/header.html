@@ -1,0 +1,85 @@
+{% load menu_tags %}
+{% get_menu 'main' as navigation %}
+<header class="header js-header {% block header_class %}{% endblock %}">
+    <i class="x"></i>
+    <div class="container d-flex flex--space-between align-items-center">
+        <div class="header__logo d-flex">
+            <a href="/">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 533.66 533.66" style="enable-background:new 0 0 142 142;" xml:space="preserve" width="100%">
+                    <path class="cls-1" d="M294.08,33.67C146.72,33.67,27.25,153.13,27.25,300.5S146.72,567.33,294.08,567.33,560.91,447.87,560.91,300.5,441.45,33.67,294.08,33.67ZM203.9,220.26h-51V280h37.31v43.54H152.9V382h51v42.29H109.36V178H203.9Zm133.72,29.86H295.25l.08-13.68a16.17,16.17,0,1,0-32.34,0V365.81a16.17,16.17,0,1,0,32.34,0v-42.3H276.67V280h60.95v144.3H316.48v-8.86a57.55,57.55,0,0,1-36.7,13.22h-1.24a58,58,0,0,1-57.85-57.85V231.46a58,58,0,0,1,57.85-57.84h1.24a58,58,0,0,1,57.84,57.84ZM477,370.16a58.64,58.64,0,0,1-58.47,58.47h0A58.64,58.64,0,0,1,360,370.16V232.08a58.64,58.64,0,0,1,58.47-58.46h0A58.64,58.64,0,0,1,477,232.08Z" transform="translate(-27.25 -33.67)"/><rect class="cls-1" x="375.05" y="186.59" width="32.34" height="161.72" rx="16.17"/>
+                </svg>
+            </a>
+            <p class="header__logo__slogan">el valor de <br> ser distintos.</p>
+        </div> 
+        
+        {% block top_title %}{% endblock%}
+
+        <div class="header__toggle d-flex align-items-center">
+            <span class="sr-only">Menú</span>
+            <button type="button" id="nav-toggle">
+                <div class="burger flex flex--column">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+    <nav class="nav">
+        <div class="nav__container container d-flex">
+            <div class="nav__col nav__contact">
+                <h3 class="nav__title text -small">Contacto</h3>
+                <ul class="nav__contact__ul">
+                    <li class="nav__contact__item text -small">
+                        <p class="title--gray">Argentina</p>
+                        <p><a href="https://www.google.com.ar/maps/place/Agencia+EGO/@-34.5974273,-58.4382409,17z/data=!3m1!4b1!4m5!3m4!1s0x95bcb593672048e5:0x1df374438566b367!8m2!3d-34.5974273!4d-58.4360522?hl=en" target="_blank">
+                            Aguirre 540, CABA
+                        </a></p>
+                        <p><a href="tel:+541152632351" onclick="ga('send', 'event', 'Phones', 'Click', 'Phone Argentina');" target="_blank">+541152632351</a></p>
+                    </li>
+                    <li class="nav__contact__item text -small">
+                        <p class="title--gray">España</p>
+                        <p><a href="https://www.google.com.ar/maps/place/Castelldefels,+Barcelona,+Spain/@41.277919,1.9540305,14z/data=!3m1!4b1!4m5!3m4!1s0x12a482becb445f4f:0xc9f576ce44531eab!8m2!3d41.2800161!4d1.9766294?hl=en" target="_blank">
+                            Castelldefels, Barcelona
+                        </a></p>
+                        <p><a href="tel:+34617143960" onclick="ga('send', 'event', 'Phones', 'Click', 'Phone Barcelona');" target="_blank">+34617143960</a></p>
+                    </li>
+                    <li class="nav__contact__item text -small">
+                        <p><a href="mailto:info@egoargentina.com">info@egoargentina.com</a></p>
+                    </li>
+                    <li class="nav__contact__item text -small">
+                        <p>
+                            <a class="" href="https://www.facebook.com/WeareEgo/?epa=SEARCH_BOX" onclick="ga('send', 'social', 'Facebook', 'Click', '/');" target="_blank">Facebook</a>
+                            <span class="bullet"></span>
+                            <a class="" href="https://www.instagram.com/egoagency/?hl=es" onclick="ga('send', 'social', 'Instagram', 'Click', '/');" target="_blank">Instagram</a>
+                        </p>
+                        <p>
+                            <a class="" href="https://twitter.com/egoargentina?lang=es" onclick="ga('send', 'social', 'Twitter', 'Click', '/');" target="_blank">Twitter</a>
+                            <span class="bullet"></span>
+                            <a class="" href="https://www.linkedin.com/company/agenciaego/?originalSubdomain=ar" onclick="ga('send', 'social', 'LinkedIn', 'Click', '/');" target="_blank">LinkedIn</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav__col nav__destacados">
+                <h3 class="nav__title text -small">Desde el blog</h3>
+                <ul class="nav__destacados__ul">
+                    {% comment %} @foreach($header_posts as $post)
+                    <li class="nav__destacados__item text -small">
+                        <a href="{{ route('blog_post', ['slug' => $post->slug]) }}">{{  $post->title}}</a>
+                    </li>
+                    @endforeach {% endcomment %}
+                </ul>
+            </div>
+            <div class="nav__col nav__navigation">
+                <ul class="nav__navigation__ul">
+                    {% for item in navigation %}
+                        <li class="nav__navigation__item"><a href="{{ item.link }}" class="link link__more">{{ item.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="overlay"></div>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% comment %} <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5P7HNWC');</script>
+    <!-- End Google Tag Manager -->
+
+    @if(env('GOOGLE_ANALYTICS_ID','')!='')
+        <!-- Google Analytics tracking code -->
+        <script>
+                window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+                ga('create', '{{env('GOOGLE_ANALYTICS_ID', '')}}', 'auto');
+                ga('send', 'pageview');
+        </script>
+        <script async src='https://www.google-analytics.com/analytics.js'></script>
+        <!-- end Google Analytics tracking code -->
+    @endif {% endcomment %}
+    <title>
+    {% block title %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+    {% endblock %}
+    {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+            {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
+    {% endblock %}
+    </title>
+
+    {% block metadata %}
+
+    {% endblock %}
+
+
+    {% comment %} <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('img/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('img/safari-pinned-tab.svg') }}" color="#000000"> {% endcomment %}
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    {% comment %} <script src="{{ asset('js/pace.js') }}"></script>
+
+    <link href="{{ asset('css/slick-slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet"> {% endcomment %}
+
+    <style>
+       .pace {
+           display: block;
+            -webkit-pointer-events: none;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .pace .pace-progress {
+            background: #000000;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            display: block;
+        }
+
+        .pace.hide-pace {
+            opacity: 0 !important;
+        }
+
+        .cover {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 1999;
+            background:rgb(255,255,255);
+        }
+
+
+
+    </style>
+
+    <title>Agencia Ego</title>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5P7HNWC"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <svg style="display:none;" version="1.1" id="heartSymbol" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="heart" viewBox="33 -22 100 100">
+            <path class="st0" stroke="#000000" stroke-width="2" style="fill:currentColor;" d="M83,68.6L82.1,68c-1.7-1.1-43.4-27.8-43.4-53.2c0-11.7,5-20.6,13.6-24.5c9.1-4.1,20.7-1.7,30.6,6.4
+            c8.6-8.1,19.7-10.7,29.3-6.7c9.4,3.9,15,13.2,15,24.9c0,25.4-41.7,52.1-43.4,53.3L83,68.6z"></path>
+        </symbol>
+    </svg>
+          
+    {% comment %} <div class="cover"></div> {% endcomment %}
+
+    <!-- Modal Structure -->
+    <div id="projectModal" class="modal project-modal"></div>
+    
+    {% include 'core/includes/header.html' %}
+    
+    {% block content %}{% endblock %}
+
+    {% include 'core/includes/footer.html' %}
+
+
+    {% comment %} <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/easter.js') }}"></script>
+    <script src="{{ asset('js/slider.js') }}"></script> {% endcomment %}
+
+    <script>
+        Pace.on("done", function(){
+            $(".cover").fadeOut(800);
+            $(".pace-progress").fadeOut(200);
+        });
+    </script>
+
+    @yield('scripts')
+    
+</body>
+</html>
