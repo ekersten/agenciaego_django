@@ -35,7 +35,8 @@ class BehanceProject(Orderable, models.Model):
         MultiFieldPanel(
             [
                 FieldPanel('name'),
-                FieldPanel('description')
+                FieldPanel('description'),
+                ModelChooserPanel('client')
             ],
             heading=_('Project Data')
         ),
@@ -66,6 +67,7 @@ class BehanceProjectModule(Orderable, models.Model):
         verbose_name_plural = 'Behance Project Modules'
 
 
+@register_model_chooser
 class Client(models.Model):
     name = models.CharField(max_length=100)
     logo = models.ForeignKey(
@@ -75,6 +77,17 @@ class Client(models.Model):
         related_name='+',
         on_delete=models.SET_NULL
     )
+
+    panels = [
+        FieldPanel('name'),
+        ImageChooserPanel('logo')
+    ]
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
 
 
 class BehanceProjectListingPage(Page):

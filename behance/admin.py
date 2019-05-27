@@ -18,7 +18,7 @@ import requests
 import re
 import sys
 
-from .models import BehanceProject, BehanceProjectModule
+from .models import BehanceProject, BehanceProjectModule, Client
 from .helpers import create_wagtail_image_from_remote
 
 class ImportButtonHelper(ButtonHelper):
@@ -201,3 +201,16 @@ class BehanceProjectAdmin(ImportModelAdminMixin, OrderableMixin, ModelAdmin):
 
 
 modeladmin_register(BehanceProjectAdmin)
+
+
+class ClientAdmin(ModelAdmin):
+    model = Client
+    menu_label = 'Clients'
+    menu_icon = 'placeholder'
+    menu_order = 290
+    add_to_settings_menu = False
+    exclude_from_explorer = False
+    list_display = ['name', ]
+    search_fields = ('name',)
+
+modeladmin_register(ClientAdmin)
