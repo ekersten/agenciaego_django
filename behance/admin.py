@@ -149,7 +149,9 @@ class ImportView(IndexView):
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             
-            messages.add_message(self.request, messages.ERROR, '{} on {} on line {}'.format('Exception', fname, exc_tb.tb_lineno))
+            # msg = e
+
+            messages.add_message(self.request, messages.ERROR, '{} on {} on line {}'.format(exc_obj, fname, exc_tb.tb_lineno))
             return redirect('behance_behanceproject_modeladmin_index')
 
 

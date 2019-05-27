@@ -1,0 +1,9 @@
+{% extends 'modeladmin/index.html' %}
+
+{% block header_extra %}
+    <div class="right">
+        <div class="importbutton">
+            {% include 'modeladmin/includes/button.html' with button=view.button_helper.import_button %}
+        </div>
+    </div>
+{% endblock %}

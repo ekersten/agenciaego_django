@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'behance',
+    'employees',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
@@ -168,3 +169,6 @@ WAGTAIL_SITE_NAME = "agenciaego"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+
+BEHANCE_API_KEY = 'AvKStg3Zn7bNYmzqvIvGrir2h05ApM86'

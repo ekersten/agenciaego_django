@@ -23,6 +23,13 @@ class BehanceProject(Orderable, models.Model):
     description = models.TextField(blank=True, null=True)
     name = models.CharField(max_length=255)
     slug = AutoSlugField(populate_from='name', overwrite=True)
+    client = models.ForeignKey(
+        'behance.Client',
+        blank=True,
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL
+    )
 
     panels = [
         MultiFieldPanel(
@@ -59,6 +66,17 @@ class BehanceProjectModule(Orderable, models.Model):
         verbose_name_plural = 'Behance Project Modules'
 
 
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    logo = models.ForeignKey(
+        'wagtailimages.Image',
+        blank=True,
+        null=True,
+        related_name='+',
+        on_delete=models.SET_NULL
+    )
+
+
 class BehanceProjectListingPage(Page):
 
     template = 'behance/project_listing_page.html'
@@ -73,7 +91,13 @@ class BehanceProjectPage(Page):
     parent_page_types = ['behance.BehanceProjectListingPage']
 
 
-    project = models.ForeignKey(BehanceProject, on_delete=models.CASCADE, related_name='+')
+    project = models.ForeignKey(
+        BehanceProject,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
         ModelChooserPanel('project')
