@@ -1,4 +1,4 @@
-{% load menu_tags %}
+{% load menus_tags %}
 {% get_menu 'main' as navigation %}
 <header class="header js-header {% block header_class %}{% endblock %}">
     <i class="x"></i>
@@ -73,8 +73,8 @@
             </div>
             <div class="nav__col nav__navigation">
                 <ul class="nav__navigation__ul">
-                    {% for item in navigation %}
-                        <li class="nav__navigation__item"><a href="{{ item.link }}" class="link link__more">{{ item.title }}</a></li>
+                    {% for item in navigation.menu_items.all %}
+                        <li class="nav__navigation__item"><a href="{{ item.link }}" class="link link__more" target="{% if item.open_in_new_tab %}_blank{% else %}_self{% endif %}">{{ item.title }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
