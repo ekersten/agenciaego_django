@@ -1,4 +1,4 @@
-{% load wagtailuserbar %}
+{% load wagtailuserbar static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,20 +40,20 @@
     {% endblock %}
 
 
-    {% comment %} <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('img/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('img/safari-pinned-tab.svg') }}" color="#000000"> {% endcomment %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/safari-pinned-tab.svg' %}" color="#000000">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="theme-color" content="#ffffff">
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
-    {% comment %} <script src="{{ asset('js/pace.js') }}"></script>
+    <script src="{% static 'js/pace.js' %}"></script>
 
-    <link href="{{ asset('css/slick-slider.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet"> {% endcomment %}
+    <link href="{% static 'css/slick-slider.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
 
     <style>
        .pace {
@@ -110,7 +110,7 @@
         </symbol>
     </svg>
           
-    {% comment %} <div class="cover"></div> {% endcomment %}
+    <div class="cover"></div>
 
     <!-- Modal Structure -->
     <div id="projectModal" class="modal project-modal"></div>
@@ -122,9 +122,9 @@
     {% include 'core/includes/footer.html' %}
 
 
-    {% comment %} <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/easter.js') }}"></script>
-    <script src="{{ asset('js/slider.js') }}"></script> {% endcomment %}
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easter.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
 
     <script>
         Pace.on("done", function(){
@@ -133,7 +133,7 @@
         });
     </script>
 
-    @yield('scripts')
+    {% block scripts %}{% endblock %}
     
 </body>
 </html>
