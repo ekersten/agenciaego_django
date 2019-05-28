@@ -115,11 +115,15 @@
     <!-- Modal Structure -->
     <div id="projectModal" class="modal project-modal"></div>
     
-    {% include 'core/includes/header.html' %}
+    {% block header_include %}
+        {% include 'core/includes/header.html' %}
+    {% endblock %}
     
     {% block content %}{% endblock %}
 
-    {% include 'core/includes/footer.html' %}
+    {% block footer_include %}
+        {% include 'core/includes/footer.html' %}
+    {% endblock %}
 
 
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>

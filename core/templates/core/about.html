@@ -1,9 +1,12 @@
 {% extends 'core/base.html' %}
 {% load static blog_tags wagtailimages_tags %}
 
-{% block top_title %}
-    <h1 class="header__title">Agencia</h1>
+{% block header_include %}
+    {% with top_title='<h1 class="header__title">Agencia</h1>'%}
+        {{ block.super }}
+    {% endwith %}
 {% endblock %}
+
 
 {% block content %}
 

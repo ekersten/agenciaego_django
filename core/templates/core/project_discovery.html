@@ -1,8 +1,270 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
 {% block body_class %}project-discovery{% endblock %}
-{% block header_class %}header--black{% endblock %}
-{% block footer_class %}footer--black{% endblock %}
+
+{% block header_include %}
+    {% with header_class='header--black' top_title='<h1 class="header__title">Project Discovery®</h1>'%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
+{% block footer_include %}
+    {% with footer_class='footer--black'%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
 
 {% block content %}
-    <h1>Project Discovery</h1>
-{% endblock content %}
+    <main class="bg--black">
+        <section class="section section__main bg--black">
+            <div class="container">
+                <h1 class="section__main__title title title--main">
+                        <span class="title title--color">Project Discovery<sup>&reg;</sup></span>
+                        exploremos juntos!
+                </h1>
+                <p class="section__main__text">Siempre hemos buscado relacionarnos desde una perspectiva estratégica orientada a la colaboración y búsqueda conjunta de objetivos. Nos sentimos cómodos cuestionando, proponiendo, desafiando y reflexionando. Nos sentimos cómodos construyendo valor.</p>
+            </div>
+        </section>
+
+        <div class="parallax-container bg-image bg-image-services -relative">
+            <div class="parallax">
+                <img src="{% static 'img/bg-pd_s4.jpg' %}" alt="Project Discovery S4">
+            </div>
+            <p class="-absolute container -white">Creímos, Confiamos y Creamos en el proceso para construir el mundo de S4. <a href="/blog/creemos-confiamos-y-creamos-junto-a-s4" target="_blank" class="-underline">Seguir leyendo</a>.</p>
+        </div>
+
+        <section class="section bg--black section__accordion">
+            <div class="container">
+                <h1 class="article__title title title--medium"><span class="title title--color">Project Discovery<sup>&reg;</sup></span> <br>es una forma colaborativa de trabajo donde cliente y agencia conforman un solo equipo.</h1>
+                <p class="article__text">Queremos que nuestro cliente participe directamente con nosotros de una forma intensamente colaborativa durante todo el proceso, basádonos en la comunicación, ciclos cortos, prototipos rápidos y definiciones claras. El resultado es un equipo combinado, comprometido en hacer que las cosas sucedan y organizado en 5 etapas encadenadas</p>
+
+                <ul class="accordion">
+                    <li class="accordion__dropdown">
+                        <h3 class="title--small accordion__label">Entender</h3>
+                        <div class="accordion__content">
+                            <div class="d-flex flex--wrap">
+                                <div class="col left">
+                                    <p class="text"><b>En esta etapa todos los integrantes que formarán parte del proyecto se sumergirá en las características del mismo</b>, entendiendo las razones de la iniciativa, la cultura organizacional, las expectativas a satisfacer, la visión usuario, la visión cliente y <b>la razón de ser del producto digital</b>.</p>
+                                    <p class="text">Para esto, nos valdremos de reuniones de co-creación que tendrán como objetivo definir el roadmap conceptual del proyecto y los documentos que permitan la exploración completa del mismo.</p>
+                                </div>
+                                <div class="col right">
+                                    <h4 class="title title--color">Objetivo</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Definición de Objetivos de negocio.</li>
+                                        <li class="text--small text--gray">Relevamiento de Necesidades del Negocio.</li>
+                                        <li class="text--small text--gray">Benchmarking. Research de Industria y Negocio.</li>
+                                        <li class="text--small text--gray">Relevamiento de métricas y KPIs existentes.</li>
+                                    </ul>
+
+                                    <h4 class="title title--color">Metodología/Herramientas</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Análisis e investigación.</li>
+                                        <li class="text--small text--gray">Jornadas intensivas de co-creación.</li>
+                                        <li class="text--small text--gray">Brainstorming.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion__dropdown">
+                        <h3 class="title--small accordion__label">Diagnosticar</h3>
+                        <div class="accordion__content">
+                            <div class="d-flex flex--wrap">
+                                <div class="col left">
+                                    <p class="text">La etapa de entendimiento nos permite conocer en profundidad los insights de la organización para poder avanzar con la búsqueda de soluciones a medida del producto.</p>
+                                    <p class="text"><b>Durante la etapa de Diagnóstico, desplegaremos las herramientas que nos permitan encontrar los puntos de mejora y definir los procesos más efectivos que nos conduzcan a los mejores resultados.</b> Los caminos de acción pueden encauzarse en 3 procesos creativos:</p>
+                                    <ul class="accordion__content__list">
+                                        <li><b>Product Design:</b> Comunicación + Art Direction + UX</li>
+                                        <li><b>Experience design:</b> UX + Art Direction</li>
+                                        <li><b>Brand Design:</b> Comunicación + Art Direction</li>
+                                    </ul>
+                                </div>
+                                <div class="col right">
+                                    <h4 class="title title--color">Objetivo</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Diseño de user Journey Map.</li>
+                                        <li class="text--small text--gray">Diseño de client Journey Map.</li>
+                                        <li class="text--small text--gray">Identificación de Pain/Bliss Points.</li>
+                                        <li class="text--small text--gray">Definición de las problemáticas.</li>
+                                        <li class="text--small text--gray">Definición de oportunidades de mejora.</li>
+                                        <li class="text--small text--gray">Definición de los procesos de diseño.</li>
+                                        <li class="text--small text--gray">Definición de métricas + KPIs. </li>
+                                    </ul>
+
+                                    <h4 class="title title--color">Metodología/Herramientas</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Análisis e investigación.</li>
+                                        <li class="text--small text--gray">Reclutamiento de usuarios.</li>
+                                        <li class="text--small text--gray">Entrevistas Cualitativas.</li>
+                                        <li class="text--small text--gray">Encuentas y obtención de datos cuantitativos.</li>
+                                        <li class="text--small text--gray">Jornadas intensivas de co-creación.</li>
+                                        <li class="text--small text--gray">Brainstorming.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion__dropdown">
+                        <h3 class="title--small accordion__label">Crear</h3>
+                        <div class="accordion__content">
+                            <div class="d-flex flex--wrap">
+                                <div class="col left">
+                                    <p class="text"><b>Esta etapa es de caracter ágil y consiste en iteraciones en las que se proponen y diseñan alternativas que serán probadas</b> y cuyo resultado será el input de un nuevo ciclo de diseño que será probado y rediseñado hasta llegar a la versión más efectiva del producto. En la etapa de Creación podrán llevarse a cabo las siguientes tareas:</p>
+                                    
+                                    <ul class="accordion__content__list">
+                                        <li><b>Conceptualización</b></li>
+                                        <li><b>Principios de diseño</b></li>
+                                        <li><b>Mapa de funcionalidades</b></li>
+                                        <li><b>Wireframes</b></li>
+                                        <li><b>Prototipos de baja definición</b></li>
+                                        <li><b>Diseño visual / arte</b></li>
+                                        <li><b>Prototipos funcionales</b></li>
+                                        <li><b>Redlines</b></li>
+                                        <li><b>Documentación funcional</b></li>
+                                        <li><b>Desarrollo front & backend*</b></li>
+                                        <li><b>Q&A*</b></li>
+                                        <li><b>Go-live*</b></li>
+                                    </ul>
+                                </div>
+                                <div class="col right">
+                                    <h4 class="title title--color">Objetivo</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Definición Conceptual.</li>
+                                        <li class="text--small text--gray">Diseño de experiencia de usuario/cliente.</li>
+                                        <li class="text--small text--gray">Diseño de Look-and-feel (diseño visual, estética).</li>
+                                        <li class="text--small text--gray">Diseño de Comunicación.</li>
+                                        <li class="text--small text--gray">Diseño de Información.</li>
+                                        <li class="text--small text--gray">Documentación Funcional.</li>
+                                    </ul>
+
+                                    <h4 class="title title--color">Metodología/Herramientas</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Jornadas intensivas de co-creación.</li>
+                                        <li class="text--small text--gray">Mood board.</li>
+                                        <li class="text--small text--gray">Diseño UI/UX.</li>
+                                        <li class="text--small text--gray">Diseño de Flows de navegación.</li>
+                                        <li class="text--small text--gray">Prototipado.</li>
+                                        <li class="text--small text--gray">Reclutamiento de usuarios.</li>
+                                        <li class="text--small text--gray">Entrevistas Cualitativas.</li>
+                                        <li class="text--small text--gray">Encuentas y obtención de datos cuantitativos.</li>
+                                        <li class="text--small text--gray">Documentación Funcional.</li>
+                                        <li class="text--small text--gray">Manual de Identidad Digital.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion__dropdown">
+                        <h3 class="title--small accordion__label">Evaluar</h3>
+                        <div class="accordion__content">
+                            <div class="d-flex flex--wrap">
+                                <div class="col left">
+                                    <p class="text"><b>Una vez desarrollada la solución e implementada a los usuarios, proponemos ser parte del proceso de mejora contínua</b> para evaluar la efectividad de las soluciones y diagnosticar nuevos puntos de mejora que permitan consolidar la experiencia de uso del producto y la vinculación marca-usuario.</p>
+                                    <p class="text">Cada nuevo hallazgo será tomado como el inicio de un nuevo ciclo, transitando el proceso de Project Discovery®:</p>
+                                    <ul class="accordion__content__list">
+                                        <li><b>Entender</b></li>
+                                        <li><b>Diagnosticar</b></li>
+                                        <li><b>Crear</b></li>
+                                        <li><b>Evaluar</b></li>
+                                    </ul>
+                                </div>
+                                <div class="col right">
+                                    <h4 class="title title--color">Objetivo</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Búsqueda de mejoras de oportunidad.</li>
+                                        <li class="text--small text--gray">Benchmarking.</li>
+                                        <li class="text--small text--gray">Análisis y redefinición de métricas y KPIs.</li>
+                                        <li class="text--small text--gray">Reconocer la oportunidad de diseñar nuevos features o determinar la obsolescencia de otros.</li>
+                                        <li class="text--small text--gray">Seguimiento y monitoreo del cumplimiento de las definiciones conceptuales de la razón de ser del producto.</li>
+                                    </ul>
+
+                                    <h4 class="title title--color">Herramientas</h4>
+                                    <ul>
+                                        <li class="text--small text--gray">Recolección de métricas (ej.: Google Analitycs).</li>
+                                        <li class="text--small text--gray">Métricas de comportamiento (ej.: hotjar).</li>
+                                        <li class="text--small text--gray">Encuestas de experiencias de uso (NPS).</li>
+                                        <li class="text--small text--gray">Entrevistas de usuario.</li>
+                                        <li class="text--small text--gray">Pruebas de usuarios.</li>
+                                        <li class="text--small text--gray">Relevamiento On/Off.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion__dropdown">
+                        <h3 class="title--small accordion__label">Iterar</h3>
+                    </li>
+                </ul> <!-- / accordion -->
+
+                <h3 class="section__services__title title--light -big">Una metodología humana, flexible y tangible</h3>
+
+                <div class="columns slider flex flex--space-between">
+                    <div class="col quarter">
+                        <h4 class="columns__title title--roman -small">Equipos <br>combinados</h4>
+                        <p class="columns__text text--small text--gray">Perfiles de diversas áreas, visiones y objetivos que permiten identificar las aristas de las necesidad a resolver.</p>
+                    </div>
+                    <div class="col quarter">
+                        <h4 class="columns__title title--roman -small">Centrado <br>en las personas</h4>
+                        <p class="columns__text text--small text--gray">El usuario final moldea la solución mientras que el usuario interno nos brinda las herramientas para lograrlo.</p>
+                    </div>
+                    <div class="col quarter">
+                        <h4 class="columns__title title--roman -small">Enfocado <br>en soluciones</h4>
+                        <p class="columns__text text--small text--gray">Exploramos soluciones que pueden abarcar Diseño UX, Dirección de Arte, estrategias de comunicación, Branding, etc.</p>
+                    </div>
+                    <div class="col quarter">
+                        <h4 class="columns__title title--roman -small">Orientado <br>a entregables</h4>
+                        <p class="columns__text text--small text--gray">El proceso es rigurosamente documentado y sus etapas estás orientadas a cumplir objetivos específicos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section section__goals -border-top">
+            <div class="container">
+                <h3 class="section__services__title title--light -big">Grandes procesos se vuelven posibles <br>cuando la cultura es colaborativa</h3>
+                <p class="article__text text--gray">Sabemos que los cambios son un proceso complejo dentro de todas las organizaciones. <strong class="strong">Project Discovery®</strong> propone una metodología de trabajo dónde las diversas áreas colaboran en la construcción de un objetivo común. Para que esto suceda, tomamos el liderazgo del proceso y creamos las condiciones para que las decisiones puedan fluir y, gracias a ello, grandes procesos pueden ser llevados adelante con una mayor participación, pertenencia y vinculación con los objetivos:</p>    
+            
+                <div class="columns slider goals flex flex--space-between" data-slick='{"dots": false,"infinite": false,"centerPadding": "10px"}'>
+                    <div class="col third">
+                        <h4 class="columns__title icon title--roman -small">Product Design</h4>
+                        <p class="columns__text text--small text--gray">La creación global de un producto digital: Naming, branding, comunicación, UX, UI y redlines.</p>
+                        <ul class="text--color text--small">
+                            <li class="title">Comunicación</li>
+                            <li class="title">Experiencia de usuario</li>
+                            <li class="title">Dirección de Arte</li>
+                        </ul>
+                    </div>
+                    <div class="col third">
+                        <h4 class="columns__title icon title--roman -small">Experience Design</h4>
+                        <p class="columns__text text--small text--gray">Diseño y análisis de la experiencia del usuario con los productos digitales de la marca.</p>
+                        <ul class="text--color text--small">
+                            <li class="title">Experiencia de Usuario</li>
+                            <li class="title">Dirección de Arte</li>
+                        </ul>
+                    </div>
+                    <div class="col third">
+                        <h4 class="columns__title icon title--roman -small">Brand Design</h4>
+                        <p class="columns__text text--small text--gray">Diseño de marca: naming, tono de comunicación, personalidad, actitud, identidad visual.</p>
+                        <ul class="text--color text--small">
+                            <li class="title">Dirección de Arte</li>
+                            <li class="title">Comunicación</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section__contact-us bg--black">
+            <div class="container">
+                <h2 class="title title--medium">
+                    Exploremos <br>
+                    tu próximo proyecto. <br>
+                    Contactate con nosotros.
+                </h2>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 {% load menus_tags blog_tags %}
 {% get_menu 'main' as navigation %}
-<header class="header js-header {% block header_class %}{% endblock %}">
+
+<header class="header js-header {{ header_class }}">
     <i class="x"></i>
     <div class="container d-flex flex--space-between align-items-center">
         <div class="header__logo d-flex">
@@ -12,7 +13,7 @@
             <p class="header__logo__slogan">el valor de <br> ser distintos.</p>
         </div> 
         
-        {% block top_title %}{% endblock%}
+        {% autoescape off %}{{ top_title }}{% endautoescape %}
 
         <div class="header__toggle d-flex align-items-center">
             <span class="sr-only">Menú</span>
