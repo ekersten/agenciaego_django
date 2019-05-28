@@ -102,7 +102,7 @@ class BehanceProjectListingPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context['use_cases'] = BlogPage.objects.live().public().filter(is_use_case=True)
-        context['projects'] = self.get_children()
+        context['projects'] = self.get_children().live()
         
         return context
     class Meta:
