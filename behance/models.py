@@ -116,7 +116,10 @@ class BehanceProjectPage(BasePage):
         related_name='+'
     )
 
+    featured_in_services = models.BooleanField(default=False)
+
     content_panels = Page.content_panels + [
+        FieldPanel('featured_in_services'),
         ModelChooserPanel('project')
     ]
     class Meta:

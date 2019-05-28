@@ -1,4 +1,4 @@
-{% load menus_tags %}
+{% load menus_tags blog_tags %}
 {% get_menu 'main' as navigation %}
 <header class="header js-header {% block header_class %}{% endblock %}">
     <i class="x"></i>
@@ -64,11 +64,12 @@
             <div class="nav__col nav__destacados">
                 <h3 class="nav__title text -small">Desde el blog</h3>
                 <ul class="nav__destacados__ul">
-                    {% comment %} @foreach($header_posts as $post)
+                    {% latest_posts 8 as posts %}
+                    {% for post in posts %}
                     <li class="nav__destacados__item text -small">
-                        <a href="{{ route('blog_post', ['slug' => $post->slug]) }}">{{  $post->title}}</a>
+                        <a href="{{ post.url }}">{{ post.title }}</a>
                     </li>
-                    @endforeach {% endcomment %}
+                    {% endfor %}
                 </ul>
             </div>
             <div class="nav__col nav__navigation">
