@@ -10,6 +10,7 @@ from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 # Create your models here.
 
 from core.models import BasePage
+from blog.models import BlogPage
 @register_model_chooser
 class BehanceProject(Orderable, models.Model):
     behance_id = models.PositiveIntegerField(editable=False)
@@ -97,6 +98,13 @@ class BehanceProjectListingPage(Page):
     template = 'behance/project_listing_page.html'
     max_count = 1
     subpage_types = ['behance.BehanceProjectPage']
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['use_cases'] = BlogPage.objects.live().public().filter(is_use_case=True)
+        context['projects'] = self.get_children()
+        
+        return context
     class Meta:
         verbose_name = 'Behance Projects Listing Page'
         verbose_name_plural = 'Behance Projects Listing Pages'
@@ -104,8 +112,10 @@ class BehanceProjectListingPage(Page):
 
 class BehanceProjectPage(BasePage):
 
-    template = 'behance/project_page.html' 
+    template = 'behance/project_listing_page.html'
+    ajax_template = 'behance/project_page.html'
     parent_page_types = ['behance.BehanceProjectListingPage']
+    subpage_types = []
 
 
     project = models.ForeignKey(
@@ -122,6 +132,16 @@ class BehanceProjectPage(BasePage):
         FieldPanel('featured_in_services'),
         ModelChooserPanel('project')
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        if not request.is_ajax():
+            context['use_cases'] = BlogPage.objects.live().public().filter(is_use_case=True)
+            context['projects'] = BehanceProjectPage.objects.live().public()
+            context['open_project'] = True
+            context['selected_project'] = self
+
+        return context
     class Meta:
         verbose_name = 'Behance Project Page'
         verbose_name_plural = 'Behance Project Pages'

@@ -1,16 +1,63 @@
-{% extends 'base.html' %}
 {% load wagtailimages_tags %}
+<span class="project-overlay"></span>
 
-
-{% block content %}
-    <h1>{{ self.title }}</h1>
-    {% for module in self.project.modules.all %}
-        <div class="image">
-            {% if module.type == 'image' %}
-                {% image module.image width-200 as img %}
-                <img src="{{ img.url }}" alt="">
-            {% endif %}
-            
+<div class="project-modal__wrapper modal-content">
+    <div class="project-modal__header">
+        <div class="container d-flex flex--space-between align-items-center">
+            <div class="header__logo">
+                {% image self.project.client.logo fill-70x70 as logo %}                
+                <img src="{{ logo.url }}" alt="{{ self.project.client.name }}">
+            </div>
+            <h1 class="header__title">{{ self.title }}</h1>
+            <button id="close-modal" class="modal-close">Cerrar</button>
         </div>
-    {% endfor %}
-{% endblock %}
+    </div>
+    <div class="project-modal__images">
+        {% for module in self.project.modules.all %}
+            {% image module.image width-1920 as img %}
+            <img src="{{ img.url }}" alt="{{ title }}">
+        {% endfor %}
+    </div>
+    <div class="project-modal__content container">
+        <div>
+            <p class="index__title title--light -small">{{ self.description }}</p>
+        </div>
+    </div>
+    <div class="project-modal__footer">
+
+        <div class="index bg--white">
+            <div class="container">
+                <h4 class="index__title title--light -small">Más casos</h4>
+            </div>
+            <div class="index__list">
+                {% comment %} <a href="{{ route('project', ['slug' => $project->next->slug]) }}" data-slug="proyectos/{{$project->next->slug}}" class="index__item flex container modal-trigger">
+                    <div class="index__item__img" style="background-image:url('{{ Resizer::widen(200, $project->next->cover) }}');"></div>
+                    <div class="index__item__title">{{ $project->next->name }}</div>
+                    <div class="index__item__gradient"></div>
+                </a>
+                <a href="{{ route('project', ['slug' => $project->next->next->slug]) }}" data-slug="proyectos/{{$project->next->next->slug}}" class="index__item flex container modal-trigger">
+                    <div class="index__item__img" style="background-image:url('{{ Resizer::widen(200, $project->next->next->cover) }}');"></div>
+                    <div class="index__item__title">{{ $project->next->next->name }}</div>
+                    <div class="index__item__gradient"></div>
+                </a>
+                <a href="/proyectos#projects" class="index__item flex container">
+                    Ver todos
+                </a> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var modal = $('.project-modal');
+$('.project-modal .modal-trigger').click(function(i) {
+    i.preventDefault();
+    var $el = $(i.currentTarget);
+    history.pushState({}, '', $el.attr('href'));
+    ga('send','pageview',$el.attr('data-slug'));
+    modal.load($el.attr('href'), function() {
+        modal.scrollTop(0);
+        modal.stop(true, true).fadeIn(500, "linear");
+    });
+});
+</script>

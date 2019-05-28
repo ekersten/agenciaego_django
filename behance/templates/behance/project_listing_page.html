@@ -1,10 +1,79 @@
 {% extends 'core/base.html' %}
+{% load static wagtailimages_tags %}
+
+
+{% block header_include %}
+    {% with top_title='<h1 class="header__title">Proyectos</h1>'%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
 
 {% block content %}
-<h1>Projects</h1>
-<div class="list-group">
-    {% for page in self.get_children %}
-        <a href="{{ page.url }}" class="list-group-item list-group-item-action ">{{ page.title }}</a>
-    {% endfor %}
-</div>
+
+    <main>
+        <section class="section section__main">
+            <div class="container">
+                <h1 class="section__main__title title title--main"> 
+                    Construimos <br><mark class="title--highlighted">experiencias</mark> <mark class="title--highlighted">digitales</mark>
+                </h1>
+                <p class="section__main__text">Amamos lo que hacemos, somos apasionados de las ideas, los conceptos y sus significados. Somos rebeldes, no nos conformamos con lo que está escrito. Somos nerds y artistas. Somos obsesionados por los detalles. Somos fervientes creyentes de que no hay techo para la mejora. Somos exigentes, comprometidos, pensantes, libres y creativos. Aquí encontrarás historias y casos de estudio de estos años colaborando junto a nuestros clientes.</p>
+            </div>
+        </section>
+    
+        <section class="section -no-pad-bot" id="projects">
+            <div class="index bg--white">
+                <div class="container">
+                    <h4 class="index__title title--light -small">Proyectos</h4>
+                
+                    <div class="projects__list d-flex">
+                        {% for project in projects %}
+                            {% image project.specific.project.cover fill-435x200 as img %}
+                            <a data-target="projectModal" class="projects__list__item modal-trigger" href="{{ project.url }}">
+                                <div class="projects__list__img" style="background-image:url('{{ img.url }}');"></div>
+                                <h5 class="projects__list__name">{{ project.title }}</h5>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        {% if use_cases.count > 0 %}
+        <section class="section">
+            <div class="index bg--white">
+                <div class="container">
+                    <h4 class="index__title title--light -small">Historias</h4>
+                </div>
+                <div class="index__list">
+                    {% for use_case in use_cases %}
+                    <a href="{{ use_case.url }}" class="index__item flex container">
+                        {% image use_case.cover fill-200x105 as img %}
+                        <div class="index__item__img" style="background-image:url('{{ img.url }}');"></div>
+                        <div class="index__item__title">{{ use_case.title }}</div>
+                        <div class="index__item__gradient"></div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+    
+    </main>
+
+{% endblock %}
+
+{% block scripts %}
+    {% if open_project %}
+        <script>
+        var modal = $('.project-modal');
+        window.last_modal_url = '/proyectos';
+        // poner flag de que el modal esta abierto
+        var url = '{{ self.url }}';
+        modal.load(url, function() {
+            modal.stop(true, true).fadeToggle(300, "linear");
+            $('body').css('overflow', 'hidden');
+        });
+        </script>
+    {% endif %}
+    <script src="{% static 'js/projects.js' %}"></script>
 {% endblock %}

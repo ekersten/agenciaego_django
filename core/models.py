@@ -27,8 +27,7 @@ class ServicesPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['projects'] = behance_models.BehanceProjectPage.objects.live(
-        ).public().filter(featured_in_services=True).all()
+        context['projects'] = behance_models.BehanceProjectPage.objects.live().public().filter(featured_in_services=True).all()
         return context
     class Meta:
         verbose_name = 'Services Page'
