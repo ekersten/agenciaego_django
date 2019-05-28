@@ -1,0 +1,84 @@
+<div class="blog-post" data-url="{{ self.url }}" data-title="{{ self.title }}">
+    <main class="pad-top">
+        <article class="article bg--white">
+            <div class="editable">
+                <h1>contenido</h1>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer-project">
+        <div class="container">
+            {% comment %}
+            <div class="d-flex -border-top">
+                @if($post->employees()->count() > 0)
+                    @if($post->use_case) 
+                    <div class="col">
+                        <h4>Ego's</h4>
+                        <ul>
+                            @foreach($post->employees as $employee)
+                            <li>{{ $employee->name }} <span>{{ $employee->position }}</span></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @else 
+                    <div class="col flex">
+                        <div class="col__img">
+                            <img src="{{ $post->employees->first()->avatar }}" alt="{{ $post->employees->first()->name }}">
+                        </div>
+                        <div class="col__div">
+                            <h4>Autor</h4>
+                            <ul>
+                                <li>{{ $post->employees->first()->name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+                @endif
+                @if($post->links()->count() > 0)
+                    <div class="col">
+                        <h4>Links vinculados</h4>
+                        <ul>
+                            @foreach($post->links as $link)
+                            <li><a href="{{ $link->url }}" target="{{ $link->target }}">{{ $link->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="col">
+                    <h4>Compartir</h4>
+                    <button class="btn-share" data-sharer="facebook" onclick="ga('send', 'social', 'Facebook', 'share', {{ route('blog_post', ['slug' => $post->slug]) }});" data-url="{{ route('blog_post', ['slug' => $post->slug]) }}">Facebook</button>
+                    <span class="bullet"></span>
+                    <button class="btn-share" data-sharer="twitter" onclick="ga('send', 'social', 'Twitter', 'share', {{ route('blog_post', ['slug' => $post->slug]) }});" data-url="{{ route('blog_post', ['slug' => $post->slug]) }}">Twitter</button>
+                    <span class="bullet"></span>
+                    <button class="btn-share" data-sharer="linkedin" onclick="ga('send', 'social', 'Linkedin', 'share', {{ route('blog_post', ['slug' => $post->slug]) }});" data-url="{{ route('blog_post', ['slug' => $post->slug]) }}">LinkedIn</button>
+                </div>
+                {% endcomment %}
+                <div class="col likes">
+                    <div class="d-flex">
+                        <div class="heartSymbol">
+                            <input type="checkbox" onclick="ga('send', 'event', 'Blog', 'like', 'Blog Post');" class="hackyBox" data-post-id="{{ self.id }}" {% comment %}@if ($post_liked == 1) checked="checked" @endif {% endcomment %}/>
+                            <span class="heart">
+                                <svg>
+                                <use xlink:href="#heart"></use>
+                                </svg>
+                            </span>
+                            <span class="layer">
+                                <svg>
+                                <use xlink:href="#heart"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <span class="value">{{ self.likes }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </footer> 
+    {% if self.get_next_sibling %}
+        {% with next=self.get_next_sibling %}
+            <a href="{{ next.url }}" class="pagination__next">Cargar {{ next.title }}</a>
+        {% endwith %}
+    {% endif %}
+</div>

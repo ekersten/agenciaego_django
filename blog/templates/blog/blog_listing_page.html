@@ -1,6 +1,52 @@
 {% extends 'core/base.html' %}
+{% load wagtailimages_tags %}
 
+{% block header_include %}
+    {% with top_title='<h1 class="header__title">Blog</h1>'%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
 
 {% block content %}
-    <h1>Blog</h1>
+
+    <main>
+        <section class="section section__blog bg--white">
+            <div class="container">
+                <h1 class="title title--main">
+                    <mark class="title--highlighted">Blog:</mark>
+                </h1>
+                {% for post in self.get_children.live %}
+                    {% if forloop.first %}
+                        <a href="{{ post.url }}">
+                            <h2 class="title title--main">
+                                {{ post.title }}
+                            </h2>
+                        </a>
+                        {% if post.specific.cover %}
+                            {% image post.specific.cover width-1440 as img %}
+                            <a href="{{ post.url }}">
+                                <img class="article__img" src="{{ img.url }}" alt="{{ post.title }}">
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        
+        <div class="index bg--white">
+            <div class="index__list">
+                {% for post in self.get_children.live %}
+                    {% if not forloop.first %}
+                        <a href="{{ post.url }}" class="index__item flex container">
+                            <div class="index__item__img" {% if post.specific.cover %} {% image post.specific.cover fill-200x105 as img %}style="background-image:url('{{ img.url }}');"{% endif %}></div>
+                            <div class="index__item__title">{{ post.title }}</div>
+                            <div class="index__item__gradient"></div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+
 {% endblock %}
