@@ -2,6 +2,7 @@ from django.db import models
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from employees.models import Employee
 class BasePage(Page):
     cover = models.ForeignKey(
         'wagtailimages.Image',
@@ -31,6 +32,13 @@ class AboutPage(Page):
     max_count = 1
     subpage_types = []
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['partners'] = Employee.objects.filter(type=1)
+        context['leads'] = Employee.objects.filter(type=2)
+        context['teams'] = Employee.objects.filter(type=3)
+
+        return context
     class Meta:
         verbose_name = 'About Page'
         verbose_name_plural = 'About Pages'

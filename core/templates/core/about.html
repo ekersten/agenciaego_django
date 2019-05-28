@@ -1,6 +1,121 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
+
+{% block top_title %}
+    <h1 class="header__title">Agencia</h1>
+{% endblock %}
 
 {% block content %}
-    <h1>Agencia</h1>
+
+    <main>
+        <section class="section section__main">
+            <div class="container">
+                <h1 class="section__main__title title title--main"> 
+                    Creemos en el <br><mark class="title--highlighted">valor de ser</mark> <mark class="title--highlighted">distintos.</mark>
+                </h1>
+                <p class="section__main__text">Durante estos últimos 7 años pasamos de ser una pequeña agencia a construir un equipo de profesionales que resuelve necesidades de clientes de carácter mundial. Nos focalizamos en servicios integrales, encontrando la mejor solución cualquiera sea la plataforma que se necesite y convirtiendo los resultados en claros casos de éxito.</p>
+            </div>
+        </section>
+    
+        <div class="parallax-container bg-image bg-image-about -relative">
+            <div class="parallax">
+                <img src="{% static 'img/bg-about.png' %}" alt="Agencia Ego Aguirre">
+            </div>
+            <p class="-absolute container"><span>Viva la vida</span>, nuestro mantra para este 2019.</p>
+        </div>
+    
+        <article class="article">
+            <div class="container">
+                <h1 class="article__title title title--medium">Queríamos ofrecer un servicio único y lo hicimos.</h1>
+                <p class="article__text">Agencia EGO nace en 2011 con la idea de brindar servicios digitales posicionándose como una agencia boutique por las capacidades creativas y estéticas de sus fundadores.</p>
+                <p class="article__text">La visión de la agencia era la de integrar servicios y habilidades enfocadas en el mundo digital construyendo una propuesta distinta y ágil, que permitiese crear productos que contribuyan a los objetivos de cada cliente.</p>
+                <p class="article__text">En un contexto dónde el mundo digital demanda mucho más de lo que la industria tradicional podía ofrecer, Agencia EGO se enfoca en el potencial de estos nuevos canales consolidando una propuesta que reúne experiencia, creatividad, dirección artística, experiencia de usuario y estrategia comercial al servicio de los objetivos de cada negocio, buscando maximizar resultados y la eficiencia de los procesos.</p>
+    
+                <h3 class="article__scnd-title title">Afianzando el modelo de agencia</h3>
+                <p class="article__text">El modelo “boutique” que parecía insostenible en el tiempo se volvió nuestro valor agregado. Sin perder el rumbo, la Agencia puso su foco en el crecimiento profesionalizando las diversas áreas, mejorando procesos e incorporando profesionales de experiencia como los cimientos de una estructura sólida de un equipo interdisciplinario y de excelencia.</p>
+                <p class="article__text">Sobre las bases de una cultura de mejora continua y la incorporación de distinguidos profesionales, se afianza un modelo de agencia que respira la calidad y atención personalizada propia de un modelo “boutique”.</p>
+            </div>
+        </article>
+    
+        <article class="article -border-top">
+            <div class="container">
+    
+                <h1 class="article__title title title--medium">Formados por un equipo dinámico multidisciplinario</h1>
+                <p class="article__text">Los últimos años hemos aprendido el verdadero valor que se crea cuando clientes y agencia fijan un acuerdo de lealtad, transparencia y sinceridad haciendo de estas relaciones una demostración de compromiso ante los desafios. En Agencia Ego creemos en el trabajo en equipo más que nadie. Confiamos en las relaciones humanas y apoyamos al vínculo diario que se crea entre profesionales afianzando negocios y objetivos.</p>
+                <img class="article__img" src="{% static 'img/santander-app.jpg' %}" alt="Santander Río App">
+    
+                <div class="columns slider flex flex--space-between" data-slick='{"infinite": true}'>
+                {% for partner in partners %}
+                    <div class="col third">
+                        <h3 class="title--small columns__title">{{ partner.name }}
+                            <span class="text text--small block">{{ partner.position }}</span>
+                            {% if partner.subposition %}
+                            <span class="text text--small text--gray block">{{ partner.subposition }}</span>
+                            {% endif %}
+                        </h3>
+                        <p class="text--small columns__text">
+                        {% autoescape off %}
+                            {{ partner.bio }}
+                        {% endautoescape %}
+                        </p>
+                    </div>
+                {% endfor %}
+                    
+                    
+                </div>
+    
+            </div>
+        </article>
+    
+        <section class="section section__team bg--dark">
+            <div class="container">
+                <p class="title--light -big">Contamos con un equipo de 40+ personas con perfiles de Directores de Arte y Creatividad, Analistas UX, Diseñadores Web, Desarrolladores y Project Managers. Estos perfiles se asignan a los distintos proyectos de acuerdo a la naturaleza y alcance de los mismos, contando con líderes con experiencia en la industria y en el área de acción.</p>
+    
+                <div class="section__team__leaders columns slider flex flex--wrap" data-slick='{"infinite": true}'>
+                    {% for lead in leads %}
+                    <div class="col third">
+                        <h3 class="title--small columns__title">{{ lead.name }}
+                            <span class="text text--small text--gray block">{{ lead.position }}</span>
+                        </h3>
+                        <p class="text--small text--gray columns__text">{% autoescape off %}{{ lead.bio }}{% endautoescape %}</p>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+    
+                <div class="section__team__members columns flex flex--wrap">
+                    {% for team in teams %}
+                    <div class="col quarter">
+                        <h4 class="title--small columns__title">{{ team.name }}
+                            <span class="text text--small text--gray block">{{ team.position }}</span>
+                        </h4>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </section>
+    
+        <section class="section -no-pad-bot">
+            <div class="index bg--white">
+                <div class="container">
+                    <h4 class="index__title title--light -small">Conocenos mejor, así pensamos.</h4>
+                </div>
+                {% comment %} <div class="index__list">
+                    @foreach ($posts as $post)
+                    <a href="{{ route('blog_post',  ['slug' => $post->slug]) }}" class="index__item flex container">
+                        <div class="index__item__img" style="background-image:url('{{ Resizer::widen(300, $post->cover) }}');"></div>
+                        <div class="index__item__title">{{ $post->title }}</div>
+                        <div class="index__item__gradient"></div>
+                    </p>
+                    @endforeach
+                    <a href="{{ route('blog') }}" class="index__item flex container">
+                        Leer más en el blog...
+                    </a>
+                </div> {% endcomment %}
+            </div>
+        </section>
+    </main>
+
 {% endblock %}
