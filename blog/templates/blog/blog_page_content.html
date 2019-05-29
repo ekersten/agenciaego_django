@@ -12,32 +12,33 @@
 
     <footer class="footer-project">
         <div class="container">
-            {% comment %}
+            
             <div class="d-flex -border-top">
-                @if($post->employees()->count() > 0)
-                    @if($post->use_case) 
+                {% if self.employees.count > 0 %}
+                    {% if self.is_use_case %}
                     <div class="col">
                         <h4>Ego's</h4>
                         <ul>
-                            @foreach($post->employees as $employee)
-                            <li>{{ $employee->name }} <span>{{ $employee->position }}</span></li>
-                            @endforeach
+                            {% for employee in self.employees.all %}
+                            <li>{{ employee.name }} <span>{{ employee.position }}</span></li>
+                            {% endfor %}
                         </ul>
                     </div>
-                    @else 
+                    {% else %}
                     <div class="col flex">
                         <div class="col__img">
-                            <img src="{{ $post->employees->first()->avatar }}" alt="{{ $post->employees->first()->name }}">
+                            <img src="{{ self.employees.first.avatar }}" alt="{{ self.employees.first.nane }}">
                         </div>
                         <div class="col__div">
                             <h4>Autor</h4>
                             <ul>
-                                <li>{{ $post->employees->first()->name }}</li>
+                                <li>{{ self.employees.first.name }}</li>
                             </ul>
                         </div>
                     </div>
-                    @endif
-                @endif
+                    {% endif %}
+                {% endif %}
+            {% comment %}
                 @if($post->links()->count() > 0)
                     <div class="col">
                         <h4>Links vinculados</h4>

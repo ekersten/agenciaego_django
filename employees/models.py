@@ -10,3 +10,6 @@ class Employee(Orderable, models.Model):
     type = models.SmallIntegerField()
     position = models.CharField(max_length=200, blank=True, null=True)
     subposition = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.name

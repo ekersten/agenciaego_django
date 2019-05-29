@@ -1,6 +1,7 @@
 import random
 
 from django.db import models
+from django import forms
 from django.utils.translation import ugettext as _
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
@@ -74,9 +75,9 @@ class BlogPage(BasePage):
         FieldPanel('likes'),
         MultiFieldPanel(
             [
-                InlinePanel('employees', label=_('Employee'))
+                FieldPanel('employees', widget=forms.SelectMultiple)
             ],
-            heading=_('Author(s)')
+            heading=_('Employees')
         ),
         StreamFieldPanel('content')
     ]
