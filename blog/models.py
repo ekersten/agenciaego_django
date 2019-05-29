@@ -17,6 +17,7 @@ from streams.blocks import (
     FullWidthImageBlock,
     TextImageBlock,
     TitleImageBlock,
+    ProjectBlock,
 )
 
 
@@ -51,6 +52,7 @@ class BlogPage(BasePage):
             ('fw_image', FullWidthImageBlock()),
             ('text_image', TextImageBlock()),
             ('title_image', TitleImageBlock()),
+            ('project', ProjectBlock()),
         ],
         blank=True,
         null=True

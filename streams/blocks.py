@@ -1,6 +1,10 @@
 from django.utils.translation import ugettext as _
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtailmodelchooser.blocks import ModelChooserBlock
+
+from behance import models as behance_models
+
 
 class TitleBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
@@ -92,3 +96,14 @@ class TitleImageBlock(blocks.StructBlock):
         icon = 'image'
         label = _('Title Image')
         group = _('Media')
+
+
+class ProjectBlock(blocks.StructBlock):
+    project = blocks.PageChooserBlock(
+        required=True, target_model='behance.BehanceProjectPage')
+
+    class Meta:
+        template = 'streams/project_block.html'
+        icon = 'site'
+        label = _('Project Embed')
+        group = _('Site')

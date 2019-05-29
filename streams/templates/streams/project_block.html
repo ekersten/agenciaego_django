@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+<a href="{{ self.project.url }}" data-slug="{{ self.project.slug }}" class="project-link modal-trigger">
+    <div class="project-wrapper d-flex">
+        {% image self.project.project.cover fill-260x205 as img %}
+        <div class="project-wrapper__img" style="background-image:url({{ img.url }});"></div>
+        <div class="project-wrapper__text d-flex">
+            <h3>{{ self.project.title }}</h3>
+            <p>{{ self.project.project.description }}</p>
+        </div>
+    </div>
+</a>
