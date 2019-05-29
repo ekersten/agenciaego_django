@@ -1,0 +1,6 @@
+a[href$=".gif"] {
+    color: #000;
+    cursor: default;
+    font-family: AvenirNextLTBold,sans-serif;
+    border-bottom: 2px dotted #000;
+}
