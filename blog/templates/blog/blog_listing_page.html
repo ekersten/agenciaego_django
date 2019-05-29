@@ -15,7 +15,7 @@
                 <h1 class="title title--main">
                     <mark class="title--highlighted">Blog:</mark>
                 </h1>
-                {% for post in self.get_children.live %}
+                {% for post in self.get_children.live.public %}
                     {% if forloop.first %}
                         <a href="{{ post.url }}">
                             <h2 class="title title--main">
@@ -35,7 +35,7 @@
         
         <div class="index bg--white">
             <div class="index__list">
-                {% for post in self.get_children.live %}
+                {% for post in self.get_children.live.public %}
                     {% if not forloop.first %}
                         <a href="{{ post.url }}" class="index__item flex container">
                             <div class="index__item__img" {% if post.specific.cover %} {% image post.specific.cover fill-200x105 as img %}style="background-image:url('{{ img.url }}');"{% endif %}></div>
