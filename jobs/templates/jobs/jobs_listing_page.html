@@ -1,6 +1,34 @@
 {% extends 'core/base.html' %}
+{% load wagtailimages_tags %}
 
+{% block header_include %}
+    {% with top_title='<h1 class="header__title">Postulate</h1>'%}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
 
 {% block content %}
-    <h1>Postulate</h1>
+
+    <main>
+        <section class="section section__main bg--white">
+            <div class="container">
+                <h1 class="title title--main">
+                    Te estamos <br> <mark class="title--highlighted">buscando</mark>
+                </h1>
+            </div>
+        </section>
+    
+        <div class="index bg--white">
+            <div class="index__list">
+                {% for job in self.get_children.live.public %}
+                <a href="{{ job.url }}" class="index__item flex container">
+                    <div class="index__item__img" {% if job.specific.cover %} {% image job.specific.cover fill-200x105 as img %}style="background-image:url('{{ img.url }}');"{% endif %}></div>
+                    <div class="index__item__title">{{ job.title }}</div>
+                    <div class="index__item__gradient"></div>
+                </a>    
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
 {% endblock %}

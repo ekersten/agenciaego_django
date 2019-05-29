@@ -2,10 +2,22 @@ from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.core.blocks import CharBlock
-from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from core.models import BasePage
 # Create your models here.
 
+
+from streams.blocks import (
+    TitleBlock,
+    SubtitleBlock,
+    SimpleRichTextBlock,
+    BlockQuoteBlock,
+    YoutubeEmbedBlock,
+    FullWidthImageBlock,
+    TextImageBlock,
+    TitleImageBlock,
+    ProjectBlock,
+)
 
 class JobsListingPage(Page):
     template = 'jobs/jobs_listing_page.html'
@@ -25,17 +37,32 @@ class JobPage(BasePage):
     subpage_types = []
     parent_page_types = ['jobs.JobsListingPage']
 
+    short_description = models.TextField(blank=True, null=True)
+
     content = StreamField(
         [
-            ('text', CharBlock(required=False, max_length=100))
+            ('title', TitleBlock()),
+            ('subtitle', SubtitleBlock()),
+            ('text', SimpleRichTextBlock()),
+            ('quote', BlockQuoteBlock()),
+            ('video', YoutubeEmbedBlock()),
+            ('fw_image', FullWidthImageBlock()),
+            ('text_image', TextImageBlock()),
+            ('title_image', TitleImageBlock()),
+            ('project', ProjectBlock()),
         ],
         blank=True,
         null=True
     )
 
     content_panels = BasePage.content_panels + [
+        FieldPanel('short_description'),
         StreamFieldPanel('content')
     ]
+
+    @property
+    def formatted_title(self):
+        return '<h1 class="header__title">{}</h1>'.format(self.title)
 
     class Meta:
         verbose_name = 'Job Page'
