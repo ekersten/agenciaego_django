@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext as _
 from wagtail.core import blocks
-from wagtail.admin.blocks import PageChooserBlock
-
+from wagtail.core.blocks import PageChooserBlock
 class PageBlock(blocks.StructBlock):
     page = PageChooserBlock()
     
