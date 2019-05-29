@@ -1,8 +1,11 @@
+{% load wagtailcore_tags %}
 <div class="blog-post" data-url="{{ self.url }}" data-title="{{ self.title }}">
     <main class="pad-top">
         <article class="article bg--white">
             <div class="editable">
-                <h1>contenido</h1>
+                {% for block in page.content %}
+                    {% include_block block %}
+                {% endfor %}
             </div>
         </article>
     </main>

@@ -6,7 +6,18 @@ from wagtail.core.fields import StreamField
 from wagtail.core.blocks import CharBlock
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from core.models import BasePage
-# Create your models here.
+
+
+from streams.blocks import (
+    TitleBlock,
+    SubtitleBlock,
+    SimpleRichTextBlock,
+    BlockQuoteBlock,
+    YoutubeEmbedBlock,
+    FullWidthImageBlock,
+    TextImageBlock,
+    TitleImageBlock,
+)
 
 
 class BlogListingPage(Page):
@@ -32,7 +43,14 @@ class BlogPage(BasePage):
 
     content = StreamField(
         [
-            ('text', CharBlock(required=False, max_length=100))
+            ('title', TitleBlock()),
+            ('subtitle', SubtitleBlock()),
+            ('text', SimpleRichTextBlock()),
+            ('quote', BlockQuoteBlock()),
+            ('video', YoutubeEmbedBlock()),
+            ('fw_image', FullWidthImageBlock()),
+            ('text_image', TextImageBlock()),
+            ('title_image', TitleImageBlock()),
         ],
         blank=True,
         null=True

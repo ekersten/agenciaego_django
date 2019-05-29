@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+<div class="medium-insert-images medium-insert-images-grid">
+    <figure>
+        {% image self.image width-1300 as img %}
+        <img src="{{ img.url }}" alt="{{ img.alt }}" />
+        {% if self.caption %}
+        <figcaption>{{ self.caption }}</figcaption>
+        {% endif %}
+    </figure>
+</div>
