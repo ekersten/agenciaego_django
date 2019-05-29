@@ -1,10 +1,19 @@
 import random
 
 from django.db import models
+from django.utils.translation import ugettext as _
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.core.blocks import CharBlock
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import (
+    StreamFieldPanel,
+    FieldPanel,
+    MultiFieldPanel,
+    InlinePanel
+) 
+
+from modelcluster.models import ParentalManyToManyField
+
 from core.models import BasePage
 
 
@@ -41,6 +50,7 @@ class BlogPage(BasePage):
     is_use_case = models.BooleanField(default=False)
     short_description = models.TextField(blank=True, null=True)
     likes = models.PositiveIntegerField(default=random.randint(900, 1500))
+    employees = ParentalManyToManyField('employees.Employee', blank=True)
 
     content = StreamField(
         [
@@ -62,6 +72,12 @@ class BlogPage(BasePage):
         FieldPanel('short_description'),
         FieldPanel('is_use_case'),
         FieldPanel('likes'),
+        MultiFieldPanel(
+            [
+                InlinePanel('employees', label=_('Employee'))
+            ],
+            heading=_('Author(s)')
+        ),
         StreamFieldPanel('content')
     ]
 

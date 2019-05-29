@@ -2,7 +2,7 @@
 <section class="section__publications bg--white">
     <div class="container publications flex flex--space-between hidden-sm">
         <div class="col quarter title hidden-sm">
-            <h3 class="title title--small">Publicaciones <br>destacadas</h3>
+            <h3 class="title title--small">{{ self.title|linebreaksbr }}</h3>
         </div>
         {% if self.page1 %}
             {% with page=self.page1 %}

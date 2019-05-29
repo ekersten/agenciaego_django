@@ -12,9 +12,9 @@ class PageBlock(blocks.StructBlock):
 
 
 class ThreePagesBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, default='Publicaciones destacadas')
+    title = blocks.TextBlock(default='Publicaciones destacadas')
 
-    page1 = PageChooserBlock(label='Pagina 0001')
+    page1 = PageChooserBlock()
     page2 = PageChooserBlock()
     page3 = PageChooserBlock()
 
