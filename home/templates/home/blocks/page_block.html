@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+<article class="article bg--white">
+    <div class="container">
+        <a href="{{ self.page.url }}" class="block {% if self.page.specific.project %}modal-trigger{% endif %}">
+            <h1 class="article__title title title--medium">{{ self.page.title }}</h1>
+            {% if self.page.specific.project %}
+                <p class="article__text">{{ self.page.specific.project.description }} <span class="link link__more">Seguir leyendo</span></p>
+                {% image self.page.specific.project.cover width-1440 as img %}
+                <img class="article__img" src="{{ img.url }}" alt="{{ self.page.title }}">
+            {% else %}
+                <p class="article__text">{{ self.page.specific.short_description }} <span class="link link__more">Seguir leyendo</span></p>
+                {% image self.page.specific.cover width-1440 as img %}
+                <img class="article__img" src="{{ img.url }}" alt="{{ self.page.title }}">
+            {% endif %}
+            
+        </a>
+    </div>
+</article>

@@ -1,0 +1,142 @@
+{% load wagtailimages_tags %}
+<section class="section__publications bg--white">
+    <div class="container publications flex flex--space-between hidden-sm">
+        <div class="col quarter title hidden-sm">
+            <h3 class="title title--small">Publicaciones <br>destacadas</h3>
+        </div>
+        {% if self.page1 %}
+            {% with page=self.page1 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+        {% if self.page2 %}
+            {% with page=self.page2 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+        {% if self.page3 %}
+            {% with page=self.page3 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+    </div>
+    <div class="container slider publications visible-sm" data-slick='{"centerPadding": "10px", "dots": false, "infinite": false}'>
+        {% if self.page1 %}
+            {% with page=self.page1 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+        {% if self.page2 %}
+            {% with page=self.page2 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+        {% if self.page3 %}
+            {% with page=self.page3 %}
+            <a href="{{ page.url }}" class="col quarter publications__col {% if page.specific.project %}modal-trigger{% endif %}">
+                {% if page.specific.project %}
+                    {% image page.specific.project.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% else %}
+                    {% image page.specific.cover width-748 as img%}
+                    <div class="publications__img" style="background-image:url({{ img.url }});"></div>
+                {% endif %}
+                <div class="publications__info">
+                    <h3 class="title title--small">{{ page.title }}</h3>
+                    {% if page.specific.project %}
+                        <p class="publications__text textOverflow">{{ page.specific.project.description }}</p>
+                    {% else %}
+                        <p class="publications__text textOverflow">{{ page.specific.short_description }}</p>
+                    {% endif %}
+                    
+                </div>
+            </a>    
+            {% endwith %}
+        {% endif %}
+    </div>
+</section>
