@@ -7,7 +7,6 @@ For more information on this file, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
-from django.core
 import os
 import sys
 import site

@@ -1,16 +1,21 @@
 import os
 from .base import *
 
-DEBUG = False
+DEBUG = True
+
+SECRET_KEY='fwm$qp4075yza9_(i876v(rcvqt@6uf$^ckg^zf6w)q-rm=oe2`'
+
+ALLOWED_HOSTS = ['wagtail.egoagencydev.com']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'agenciaego_django',
+        'NAME': 'watail',
         'USER': 'wagtail',
         'PASSWORD': 'Wagtail123!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+	'sql_mode': 'traditional',
     }
 }
 
