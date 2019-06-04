@@ -1,7 +1,7 @@
 import os
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
 SECRET_KEY='fwm$qp4075yza9_(i876v(rcvqt@6uf$^ckg^zf6w)q-rm=oe2`'
 
@@ -20,8 +20,8 @@ DATABASES = {
 }
 
 
-MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', 'media'))
-STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
+MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', '..', 'wagtail_media'))
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', '..', 'wagtail_static'))
 
 
 BASE_URL = 'http://wagtail.egoagencydev.com'
