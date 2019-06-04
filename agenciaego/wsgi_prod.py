@@ -28,11 +28,11 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'agenciaego.settings.production'
 activate_this = os.path.expanduser('/home/egoagency/webapps/wagtail/.virtualenv/bin/activate_this.py')
 execfile(activate_this, dict(__file__=activate_this))
 
-project = '/home/egoagency/webapps/wagtail/agenciaego_django'
+project = '/home/egoagency/webapps/wagtail/site'
 workspace = os.path.dirname(project)
 sys.path.append(workspace)
 
-sys.path = ['/home/egoagency/webapps/wagtail/agenciaego_django',
+sys.path = ['/home/egoagency/webapps/wagtail/site',
             '/home/egoagency/webapps/wagtail/'] + sys.path
 
 
