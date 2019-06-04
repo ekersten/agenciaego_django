@@ -20,9 +20,9 @@ DATABASES = {
 }
 
 
+MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', 'media'))
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', 'static'))
 
-MEDIA_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), '../media/').replace('\\','/'))
-STATIC_ROOT = '/home/egoagency/webapps/wagtail_static'
 
 BASE_URL = 'http://wagtail.egoagencydev.com'
 
