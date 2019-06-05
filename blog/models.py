@@ -74,7 +74,7 @@ class BlogPage(BasePage):
 
     is_use_case = models.BooleanField(default=False)
     short_description = models.TextField(blank=True, null=True)
-    likes = models.PositiveIntegerField(default=random.randint(900, 1500))
+    likes = models.PositiveIntegerField(default=1234)
     employees = ParentalManyToManyField('employees.Employee', blank=True)
 
     content = StreamField(
