@@ -125,7 +125,7 @@ giphyDisplay = function () {
 
     textHover.each(function (e) {
         $(this).hover(function (e) {
-            $("body").append("<p id='giphy-image'><img src='" + $(this).attr('data-gif') + "'/></p>");
+            $("body").append("<p id='giphy-image'><img src='" + $(this).attr('href') + "'/></p>");
             $("#giphy-image").css("position", "absolute");
             if ($(window).width() > 768) {
                 $("#giphy-image")
