@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    {% if settings.site_settings.AgenciaEgoSettings.google_tagmanager_id %}
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5S9SDZ7');</script>
+    })(window,document,'script','dataLayer','{{ settings.site_settings.AgenciaEgoSettings.google_tagmanager_id }}');</script>
     <!-- End Google Tag Manager -->
+    {% endif %}
 
-    
-        <!-- Google Analytics tracking code -->
-        <script>
-                window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-                ga('create', 'UA-140950342-1', 'auto');
-                ga('send', 'pageview');
-        </script>
-        <script async src='https://www.google-analytics.com/analytics.js'></script>
-        <!-- end Google Analytics tracking code -->
+    {% if settings.site_settings.AgenciaEgoSettings.google_analytics_id %}
+    <!-- Google Analytics tracking code -->
+    <script>
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', '{{ settings.site_settings.AgenciaEgoSettings.google_analytics_id }}', 'auto');
+            ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- end Google Analytics tracking code -->
+    {% endif %}
     
     <title>
     {% block title %}
@@ -97,10 +100,13 @@
 </head>
 <body class="{% block body_class %}{% endblock %}">
     {% wagtailuserbar %}
+    
+    {% if settings.site_settings.AgenciaEgoSettings.google_tagmanager_id %}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5S9SDZ7"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ settings.site_settings.AgenciaEgoSettings.google_tagmanager_id }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    {% endif %}
 
     <svg style="display:none;" version="1.1" id="heartSymbol" xmlns="http://www.w3.org/2000/svg">
         <symbol id="heart" viewBox="33 -22 100 100">

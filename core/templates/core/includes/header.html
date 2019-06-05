@@ -50,14 +50,22 @@
                     </li>
                     <li class="nav__contact__item text -small">
                         <p>
-                            <a class="" href="https://www.facebook.com/WeareEgo/?epa=SEARCH_BOX" onclick="ga('send', 'social', 'Facebook', 'Click', '/');" target="_blank">Facebook</a>
+                            {% if settings.site_settings.AgenciaEgoSettings.facebook %}
+                                <a class="" href="{{ settings.site_settings.AgenciaEgoSettings.facebook }}" onclick="ga('send', 'social', 'Facebook', 'Click', '/');" target="_blank">Facebook</a>
+                            {% endif %}
                             <span class="bullet"></span>
-                            <a class="" href="https://www.instagram.com/egoagency/?hl=es" onclick="ga('send', 'social', 'Instagram', 'Click', '/');" target="_blank">Instagram</a>
+                            {% if settings.site_settings.AgenciaEgoSettings.instagram %}
+                                <a class="" href="{{ settings.site_settings.AgenciaEgoSettings.instagram }}" onclick="ga('send', 'social', 'Instagram', 'Click', '/');" target="_blank">Instagram</a>
+                            {% endif %}
                         </p>
                         <p>
-                            <a class="" href="https://twitter.com/egoargentina?lang=es" onclick="ga('send', 'social', 'Twitter', 'Click', '/');" target="_blank">Twitter</a>
+                            {% if settings.site_settings.AgenciaEgoSettings.twitter %}
+                                <a class="" href="{{ settings.site_settings.AgenciaEgoSettings.twitter }}" onclick="ga('send', 'social', 'Twitter', 'Click', '/');" target="_blank">Twitter</a>
+                            {% endif %}
                             <span class="bullet"></span>
-                            <a class="" href="https://www.linkedin.com/company/agenciaego/?originalSubdomain=ar" onclick="ga('send', 'social', 'LinkedIn', 'Click', '/');" target="_blank">LinkedIn</a>
+                            {% if settings.site_settings.AgenciaEgoSettings.linkedin %}
+                                <a class="" href="{{ settings.site_settings.AgenciaEgoSettings.linkedin }}" onclick="ga('send', 'social', 'LinkedIn', 'Click', '/');" target="_blank">LinkedIn</a>
+                            {% endif %}
                         </p>
                     </li>
                 </ul>

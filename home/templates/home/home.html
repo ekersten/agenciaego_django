@@ -39,19 +39,28 @@
                 <div class="col quarter">
                     <h2 class="section__contact__title title--gray">Social</h2>
                     <p class="section__contact__text social">
-                        <a class="section__contact__link" href="">Facebook</a>
+                        {% if settings.site_settings.AgenciaEgoSettings.facebook %}
+                        <a class="section__contact__link" href="{{ settings.site_settings.AgenciaEgoSettings.facebook }}" onclick="ga('send', 'social', 'Facebook', 'click', '/');" target="_blank">Facebook</a>
+                        {% endif %}
                         <span class="bullet"></span>
-                        <a class="section__contact__link" href="">Instagram</a>
+                        {% if settings.site_settings.AgenciaEgoSettings.instagram %}
+                        <a class="section__contact__link" href="{{ settings.site_settings.AgenciaEgoSettings.instagram }}" onclick="ga('send', 'social', 'Instagram', 'click', '/');" target="_blank">Instagram</a>
+                        {% endif %}
                     </p>
                     <p class="section__contact__text social">
-                        <a class="section__contact__link" href="">Twitter</a>
+                        {% if settings.site_settings.AgenciaEgoSettings.twitter %}
+                        <a class="section__contact__link" href="{{ settings.site_settings.AgenciaEgoSettings.twitter }}" onclick="ga('send', 'social', 'Twitter', 'click', '/');" target="_blank">Twitter</a>
+                        {% endif %}
                         <span class="bullet"></span>
-                        <a class="section__contact__link" href="">LinkedIn</a>
+                        {% if settings.site_settings.AgenciaEgoSettings.linkedin %}
+                        <a class="section__contact__link" href="{{ settings.site_settings.AgenciaEgoSettings.linkedin }}" onclick="ga('send', 'social', 'LinkedIn', 'click', '/');" target="_blank">LinkedIn</a>
+                        {% endif %}
                     </p>
                 </div>
                 <div class="col fifth">
+                    {% if settings.site_settings.AgenciaEgoSettings.behance %}
                     <h2 class="section__contact__title title--gray">Portfolio</h2>
-                    <a href="https://www.behance.net/agenciaego" target="_blank" class="section__contact__logo behance">
+                    <a href="{{ settings.site_settings.AgenciaEgoSettings.behance }}" target="_blank" class="section__contact__logo behance">
                         <svg version="1.1"
                         id="svg10" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1233.4 229"
@@ -101,6 +110,7 @@
                        h72.8C1187.8,114.1,1183.7,106,1178.9,100.3L1178.9,100.3z"/>
                     </svg>
                    </a>
+                   {% endif %}
                 </div>
             </div>
         </section>
