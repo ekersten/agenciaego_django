@@ -222,7 +222,6 @@ timeReader = function() {
             var readTime = Math.ceil(minutes);
             var title = $(this).find("h1");
             $("<p class='reading-time'><span>"+readTime+" min.</span> de lectura</p>" ).insertAfter(title);
-            console.log($(this).text());
         }
     });
 } 
