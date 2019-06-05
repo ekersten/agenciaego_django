@@ -59,7 +59,7 @@
                 <div class="col likes">
                     <div class="d-flex">
                         <div class="heartSymbol">
-                            <input type="checkbox" onclick="ga('send', 'event', 'Blog', 'like', 'Blog Post');" class="hackyBox" data-post-id="{{ self.id }}" {% comment %}@if ($post_liked == 1) checked="checked" @endif {% endcomment %}/>
+                            <input type="checkbox" onclick="ga('send', 'event', 'Blog', 'like', 'Blog Post');" class="hackyBox" data-post-id="{{ self.id }}" {% if post_liked %}checked="checked"{% endif %}/>
                             <span class="heart">
                                 <svg>
                                 <use xlink:href="#heart"></use>

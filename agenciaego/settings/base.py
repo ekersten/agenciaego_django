@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'streams',
     'menus',
     'site_settings',
+    'api',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',

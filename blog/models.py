@@ -2,6 +2,7 @@ import random
 
 from django.db import models
 from django import forms
+from django.conf import settings
 from django.utils.translation import ugettext as _
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import StreamField
@@ -115,6 +116,14 @@ class BlogPage(BasePage):
     @property
     def formatted_title(self):
         return '<h1 class="header__title">{}</h1>'.format(self.title)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        is_liked = False
+        if request.get_signed_cookie('plike_' + str(self.id), salt=settings.SECRET_KEY) == 'True':
+            is_liked = True
+        context['post_liked'] = is_liked
+        return context
 
     class Meta:
         verbose_name = 'Blog Page'
