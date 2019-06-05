@@ -120,8 +120,12 @@ class BlogPage(BasePage):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         is_liked = False
-        if request.get_signed_cookie('plike_' + str(self.id), salt=settings.SECRET_KEY) == 'True':
-            is_liked = True
+        try:
+            if request.get_signed_cookie('plike_' + str(self.id), salt=settings.SECRET_KEY) == 'True':
+                is_liked = True
+        except KeyError:
+            pass
+            
         context['post_liked'] = is_liked
         return context
 
