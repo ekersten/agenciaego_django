@@ -1,0 +1,26 @@
+@import "../modules/all";
+@import 'fonts';
+
+//Font Family
+$primary-font: 'AvenirNextLTBold', sans-serif;
+$secondary-font: 'Open Sans', sans-serif; 
+
+$primary-font-roman: 'AvenirLTStd-Roman', sans-serif;
+$primary-font-regular: 'AvenirLTStd-Regular', sans-serif;
+$primary-font-light: 'AvenirLTStd-Light', sans-serif;
+
+// Base Font
+$base-font-size: 16px;
+$base-line-height: 1.4em;
+
+
+//Media Queries
+$min_width: 360px;
+$max_width: 1500px;
+
+$mobile-width: 680px;
+$tablet-width: 1024px;
+$desktop-width: 1250px;
+$large-screen-width: 1560px;
+$breakpoints: (phone: 640px, tablet: 768px, desktop: 1024px) !default;
+

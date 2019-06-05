@@ -1,0 +1,18 @@
+
+// Modules and Variables
+@import "partials/base";
+//Layout
+@import "components/editable"; 
+
+.medium-insert-buttons {
+    padding-left: 26.25rem;
+    ul.medium-insert-buttons-addons {
+        li {
+            line-height: 1;
+            padding-left: 0;
+            &:before {
+                display: none;
+            }
+        }
+    }
+}

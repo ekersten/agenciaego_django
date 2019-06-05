@@ -1,0 +1,118 @@
+* {
+    box-sizing: border-box;
+}
+
+::-moz-selection { background: rgba($yellow,.99); color: $black; }
+::selection { background: rgba($yellow,.99); color: $black; }
+
+html {
+    scroll-behavior: smooth;
+    font-size: $base-font-size;
+    @include tablet {
+        font-size: 15px;
+    }
+    @include mobile {
+        font-size: 14px;
+    }
+}
+
+body {
+    color: $black;
+    background: $white;
+    overflow-x: hidden;
+    font-family: $secondary-font;
+}
+
+main {
+    overflow: hidden;
+    padding-top: em(210);
+    @include transition(all .2s ease-in-out);
+    &.pad-top {
+        padding-top: em(336);
+        @include mobile {
+            padding-top: rem(120);
+        }
+    }
+    > *:first-child {
+        padding-top: 0; 
+    }
+   @include mobile {
+       padding-top: rem(120);
+   }
+}
+
+p, a, li, span {
+    font-family: $secondary-font;
+}
+
+p {
+    color: $black;
+    line-height: 1.5;
+}
+strong, b {
+	font-family: $primary-font;
+}
+a {
+    color: inherit;
+    @include transition(all .15s ease-in-out);
+}
+
+a[href$=".gif"] {
+    color: #000;
+    cursor: default;
+    font-family: AvenirNextLTBold,sans-serif;
+    border-bottom: 2px dotted #000;
+}
+
+sup {
+    font-size: .6em;
+    vertical-align: super;
+}
+
+.bullet:before {
+    content: "\2022";
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 0 10%;
+    //overflow: hidden;
+    @include mobile {
+        padding: 0 6%;
+    }
+    @include desktop {
+        padding: 0 13%;
+    }
+    @include large-screen {
+        padding: 0 15%;
+    }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@import 'header';
+@import 'text';
+@import 'section';
+@import 'article';
+@import 'general';
+@import 'blogpost';
+@import 'project-modal';
+@import 'footer';

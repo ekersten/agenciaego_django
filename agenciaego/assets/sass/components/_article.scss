@@ -1,0 +1,90 @@
+
+.article {
+    padding: em(135) 0 em(130);
+    @include mobile {
+        padding: em(60) 0;
+    }
+    *:last-child {
+        margin-bottom: 0;
+    }
+    &__title {
+        margin-bottom: 2rem;
+    }
+    &__scnd-title {
+        line-height: 1.8;
+        font-size: em(22);
+        margin: 4rem 0 1.2rem;
+    }
+    &__text {
+        line-height: 1.8;
+        //font-size: rem(20);
+        text-align: justify;
+        margin-bottom: 1.2rem;
+        @include fluid-type($min_width, $max_width,15px, 20px);
+        @include mobile {
+            text-align: left;
+        }
+    }
+    &__img {
+        width: 100%;
+        margin: 2.8em 0;
+    }
+    > *:last-child {
+        margin-bottom: 0;
+    }
+    &--box {
+        margin: 4em 0 1.5em !important;
+        border-top: 5px solid $main-color;
+        -webkit-box-shadow: 0px 0px 60px -14px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 0px 60px -14px rgba(0,0,0,0.5);
+        box-shadow: 0px 0px 60px -14px rgba(0,0,0,0.5);
+        &__columns {
+            padding: 5em;
+            @media (max-width:768px) {
+                padding: 4em;
+                margin-bottom: 0 !important;
+            }
+            @include mobile {
+                padding: 3em;
+            }
+            .slick-dots {
+                margin-top: 1em;
+            }
+        }
+        img {
+            margin: 0;
+        }
+        &__title {
+            margin-bottom: .5em;
+        }
+    }
+    &__3columns {
+        margin: 4em 0;
+        padding-bottom: em(100);
+        justify-content: space-between;
+        @media (max-width: 768px) {
+            padding-bottom: 2em;
+        }
+        .col.third {
+            width: 32%;
+        }
+        &__title {
+            line-height: 1.4;
+            margin-bottom: 1em;
+        }
+        &__ul {
+            border-top: 1px solid $border-color;
+        }
+        &__item {
+            padding: 1em 5% 1em 0;
+            border-bottom: 1px solid $border-color;
+            &:last-child {
+                border-bottom: none;
+            }
+            @include mobile {
+                line-height: 1.5;
+            }
+        }
+    }
+}
+

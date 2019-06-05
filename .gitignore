@@ -93,3 +93,7 @@ media/*
 static/*
 !media/.gitkeep
 mysite/cache/*
+node_modules/*
+
+**/static/*
+**/static/*

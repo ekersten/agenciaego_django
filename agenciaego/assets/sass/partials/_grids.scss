@@ -1,0 +1,38 @@
+.flex {
+    display: flex;
+    @at-root #{&}--column {
+        flex-direction: column;
+    }
+    @at-root #{&}--wrap {
+        flex-wrap: wrap;
+    }
+    @at-root #{&}--align-center {
+        align-items: center;
+    }
+    @at-root #{&}--justify-center {
+        justify-content: center;
+    }
+    @at-root #{&}--justify-end {
+        justify-content: flex-end;
+    }
+    @at-root #{&}--space-between {
+        justify-content: space-between;
+    }
+    .col {
+        &.half {
+            width: 48%; 
+        }
+        &.third {
+            width: 30.5%;
+        }
+        &.quarter {
+            width: 22%;
+        }
+        &.fifth {
+            width: 19%;
+        }
+        &.sixth {
+            width: 14%;
+        }
+    }
+}

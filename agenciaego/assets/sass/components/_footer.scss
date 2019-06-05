@@ -1,0 +1,47 @@
+.footer {
+    .section__contact {
+        padding: em(160) 0 em(80);
+        @media (max-width:768px) {
+            padding-bottom: em(20);
+        }
+        @include mobile {
+            padding-top: em(100);
+        }
+        .col.quarter {
+            @include tablet {
+                &:first-child {
+                    width: 100%;
+                    margin-bottom: 2em;
+                }
+            }
+        }
+    }
+    &__slogan {
+        line-height: 1;
+        font-size: rem(22);
+        letter-spacing: -1px;
+        font-family: $primary-font;
+        @include mobile {
+            width: 100%;
+            padding-bottom: 1em;
+            border-bottom: 1px solid $border-color;
+            br {
+                display: none;
+            }
+            &::after{
+                content: "contactanos";
+                display: block;
+            }
+        }
+    }
+    &--black {
+        color: $white;
+        background: $black;
+        h2, p, a {
+            color: $white;
+        }
+        svg {
+            fill: $white;
+        }
+    }
+}

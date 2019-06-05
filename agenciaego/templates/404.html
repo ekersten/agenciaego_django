@@ -1,9 +1,16 @@
-{% extends "base.html" %}
-
-{% block body_class %}template-404{% endblock %}
+{% extends 'core/base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>Page not found</h1>
-
-    <h2>Sorry, this page could not be found.</h2>
+@section('content')
+    <main>
+        <section class="section bg--white">
+            <div class="container">
+                <h1 class="title title--normal">
+                    ¿Este es un error 404?
+                </h1>
+                <img class="full-width" src="{% static 'img/404.png' %}" alt="404 Pagina no encontrada">
+            </div>
+        </section>
+    </main>
 {% endblock %}

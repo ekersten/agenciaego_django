@@ -1,0 +1,155 @@
+.title {
+    line-height: 1.1;
+    font-family: $primary-font;
+
+    sup {
+        margin-left: .2em;
+        vertical-align: super;
+        font-family: $primary-font-regular;
+    }
+    &--main {
+        letter-spacing: -4px;
+        @include fluid-type($min_width, $max_width, 40px, 109px);
+        @media (min-width: 681px) and (max-width: 745px) {
+            @include fluid-type($min_width, $max_width, 55px, 70px);
+        }
+        @include mobile {
+            letter-spacing: -2px;
+            &.title-home {
+                @include fluid-type($min_width, $max_width, 50px, 100px);
+            }
+        }
+        sup {
+            @include fluid-type($min_width, $max_width, 18px, 35px);
+        }
+        @media (min-width: 1442px) {
+            font-size: 108px;
+        }
+    }
+    &--highlighted {
+        z-index: 1;
+        position: relative;
+        background-color: transparent;
+        &::before {
+            content: " ";
+            position: absolute;
+            z-index: -1;
+            left: -2.5%;
+            top: calc(50% + 2%);
+            height: 15%;
+            width: calc(100% + 5%);
+            background-color: $main-color; 
+        }
+    }
+    &--gray {
+        color: $light-gray;
+    }
+    &--color {
+        color: $main-color;
+    }
+    &--normal {
+        line-height: 1.1;
+        letter-spacing: -2px;
+        margin-bottom: 1.5rem;
+        font-family: $primary-font;
+        @include fluid-type($min_width, $max_width, 30px, 70px);
+    }
+    &--medium {
+        letter-spacing: -2px;
+        @include fluid-type($min_width, $max_width, 28px, 70px);
+        @include mobile {
+            letter-spacing: -1px;
+        }
+        sup {
+            @include fluid-type($min_width, $max_width, 14px, 25px);
+        }
+    }
+    &--small {
+        line-height: 1.5;
+        margin-bottom: .8em;
+        letter-spacing: -1px;
+        @include fluid-type($min_width, $max_width,16px, 22px);
+        &.title {
+            line-height: 1.2;
+        }
+    }
+    &--roman {
+        font-family: $primary-font-roman;
+        &.-small {
+            font-size: rem(22);
+            margin-bottom: .6em;
+        }
+    }
+    &--light {
+        font-family: $primary-font-light;
+        &.-big {
+            line-height: 1.2;
+            //font-size: rem(38);
+            @include fluid-type($min_width, $max_width, 22px, 38px);
+        }
+        &.-small {
+            font-size: rem(22);
+        }
+    }
+}
+
+.text {
+    letter-spacing: 0px;
+    font-family: $secondary-font;
+    &--small {
+        line-height: 1.8;
+        font-size: rem(14);
+    }
+    &--big {
+        line-height: .8;
+        font-size: rem(80);
+    }
+    &--color {
+        color: $main-color;
+    }
+    &--gray {
+        color: $gray;
+    }
+    &.-small {
+        font-size: rem(13);
+    }
+}
+
+.link {
+    &__more {    
+        z-index: 1;
+        position: relative;
+        display: inline-block;
+        letter-spacing: -.5px;
+        font-family: $primary-font;
+        list-style: outside none none;
+        &::before {    
+            content: "";
+            top: 50%;
+            left: -2.5%;
+            width: 0%;
+            height: 10%;
+            z-index: -1;
+            display: block;
+            position: absolute;
+            background-color: $main-color;
+            @include transition(all .35s cubic-bezier(.22,.68,.5,1));
+        }
+        &:hover:before {
+            width: calc(100% + 5%);
+        }
+    }
+    &__color {
+        font-family: $primary-font;
+        &:hover {
+            color: $main-color;
+        }
+    }
+    &__underline {
+        text-decoration: underline;
+    }
+}
+
+.-underline {
+    text-decoration: underline;
+}

@@ -43,7 +43,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
     <link rel="mask-icon" href="{% static 'img/safari-pinned-tab.svg' %}" color="#000000">
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="theme-color" content="#ffffff">
@@ -54,8 +53,7 @@
 
     <link href="{% static 'css/slick-slider.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <link href="{% static 'css/agenciaego.css' %}" rel="stylesheet">
-
+    
     <style>
        .pace {
            display: block;
@@ -126,52 +124,7 @@
         {% include 'core/includes/footer.html' %}
     {% endblock %}
 
-    <style>
-    
- 
- 
- 
-04.14.12
-Responsive Youtube Embed
-Learn how to make YouTube Videos Responsive
-JOHN SURDAKOWSKI
-
-APR 14, 2012
-
-Responsive YouTube Embed
-Update: I was asked to write an article for .Net Magazine about the Responsive Youtube Embed and how to make YouTube Videos Responsive. The article is more depth, suggesting some alternatives for embedding responsive videos in your web designs. Check it out in issue # 247, available October 8th 2013.
-Update 12/15/2016: This article has been updated to improve the quality since it was published. Also, the article mentioned above has also been released on CreativeBloq, on Responsive Youtube Embed.
-
-Have you ever tried to make a YouTube video responsive? If so, it can be somewhat tricky. I came across a small problem when adding a video from YouTube to one of my blog posts about the Childish Gambino website that we created. Since this website is fully responsive, I needed the YouTube video to re-size depending on the browser size or device width. However, when I added the embed code, the video had a fixed height and width. (uggh!) This looked fine on desktop computers, but pretty much broke the design when viewing on a mobile device. I wanted to know how to make a youtube video mobile. Therefore, we needed a responsive YouTube embed code. One would think that videos that with 100% width would automatically resize to the surrounding container. Well, that is not the case. Surprisingly, Youtube does not automatically have a responsive embed code.
-
-The fix was actually quite simple. Here’s how to make a youtube video mobile:
-
-You will need to wrap the responsive youtube embed code with a <div> and specify a 50% to 60% padding bottom. Then specify the child elements (iframe, object embed) 100% width, 100% height, with absolute position. This will force the embed elements to expand fullwidth automatically. Awesome! Exactly what we need.
-
-First you will need to add the following to your style sheet.
-
-CSS
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; height: 0; overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-    </style>
-
     <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/agenciaego.js' %}"></script>
-    <script type="text/javascriptagenciaego src="{% static 'js/agenciaego.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/easter.js' %}"></script>
     <script src="{% static 'js/slider.js' %}"></script>
 
     <script>
