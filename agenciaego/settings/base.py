@@ -173,6 +173,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache')
+    }
+}
+
+
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "agenciaego"

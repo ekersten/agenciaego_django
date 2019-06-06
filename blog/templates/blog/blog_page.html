@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% load static wagtailimages_tags %}
+{% load static wagtailimages_tags cache %}
 
 
 {% block metadata %}
@@ -22,9 +22,11 @@
 {% endblock %}
 
 {% block content %}
+    {% cache 42300 blog_post self.id %}
     <div class="blog-posts">
         {% include 'blog/blog_page_content.html' with post=self %}
     </div>
+    {% endcache %}
 {% endblock %}
 
 {% block scripts %}

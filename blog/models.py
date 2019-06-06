@@ -4,6 +4,8 @@ from django.db import models
 from django import forms
 from django.conf import settings
 from django.utils.translation import ugettext as _
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import StreamField
 from wagtail.core.blocks import CharBlock
@@ -128,6 +130,11 @@ class BlogPage(BasePage):
             
         context['post_liked'] = is_liked
         return context
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key('blog_post', [self.id])
+        cache.delete(key)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Blog Page'
