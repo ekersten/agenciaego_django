@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.cache.utils import make_template_fragment_key
+from django.core.cache import cache
+
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.core.blocks import CharBlock
@@ -64,6 +67,15 @@ class JobPage(BasePage):
     def formatted_title(self):
         return '<h1 class="header__title">{}</h1>'.format(self.title)
 
+    def save(self, *args, **kwargs):
+        metadata_key = make_template_fragment_key('job_page_metadata', [self.id])
+        content_key = make_template_fragment_key('job_page_content', [self.id])
+        cache.delete(metadata_key)
+        cache.delete(content_key)
+
+        return super().save(*args, **kwargs)
+
+        
     class Meta:
         verbose_name = 'Job Page'
         verbose_name_plural = 'Job Pages'
