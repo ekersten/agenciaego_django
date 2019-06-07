@@ -99,3 +99,4 @@ node_modules/*
 **/static/*
 cache/*
 test_dynamic_webpack/*.css
+mix.js.map
