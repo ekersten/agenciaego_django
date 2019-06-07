@@ -1,4 +1,4 @@
-{% load menus_tags blog_tags %}
+{% load menus_tags blog_tags cache %}
 {% get_menu 'main' as navigation %}
 
 <header class="header js-header {{ header_class }}">
@@ -81,6 +81,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            {% cache 43200 main_nav %}
             <div class="nav__col nav__navigation">
                 <ul class="nav__navigation__ul">
                     {% for item in navigation.menu_items.all %}
@@ -88,6 +89,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            {% endcache %}
         </div>
     </nav>
 </header>

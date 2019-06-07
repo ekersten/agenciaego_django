@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.cache.utils import make_template_fragment_key
+from django.core.cache import cache
 
 from django_extensions.db.fields import AutoSlugField
 from modelcluster.fields import ParentalKey
@@ -63,6 +65,11 @@ class MenuItem(Orderable):
             return self.link_title
         else: 
             return 'Missing Title'
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        key = make_template_fragment_key('main_nav')
+        cache.delete(key)
+        return super().save(force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
 
 
 
