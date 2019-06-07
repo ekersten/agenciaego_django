@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags cache %}
 
 
 {% block header_include %}
@@ -120,10 +120,11 @@
                 <img src="{% static 'img/bg-home.png' %}" alt="Agencia Ego">
             </div>
         </div>
-        
+        {% cache 43200 home_page page.id %}
         {% for block in page.content %}
             {% include_block block %}
         {% endfor %}
+        {% endcache %}
     
         <div class="index bg--white">
             <div class="index__list">
