@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let fs = require('fs');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,12 +14,11 @@ let mix = require('laravel-mix');
 
 // mix.disableNotifications();
 
-mix.autoload({
-    'jquery': ['jQuery', '$'],
-});
-
-// disable manifest
-Mix.manifest.refresh = _ => void 0
+if (!mix.inProduction()) {
+    mix.webpackConfig({
+        devtool: 'inline-source-map'
+    })
+}
 
 mix.options({
     postCss: [
@@ -27,7 +27,15 @@ mix.options({
             cascade: false
         })
     ]
+}).sourceMaps(false);
+
+mix.autoload({
+    'jquery': ['jQuery', '$'],
 });
+
+// disable manifest
+Mix.manifest.refresh = _ => void 0
+
 
 /* agenciaego */
 mix.sass('agenciaego/assets/sass/main.scss', 'agenciaego/static/css/main.css').options({ processCssUrls: false });
@@ -73,3 +81,18 @@ mix.scripts([
 mix.scripts([
     'behance/assets/js/projects.js'
 ], 'behance/static/js/projects.js');
+
+
+let scanDirs = function(dir='./') {
+    return fs.readdirSync(dir).filter(file => {
+        return fs.statSync(`${dir}/${file}`).isDirectory() && file.substr(0,1) !== '.'
+    })
+}
+
+const dirs = scanDirs()
+dirs.forEach(dir => {
+    const mixFile = `./${dir}/webpack.mix.js`
+    if (fs.existsSync(mixFile)) {
+        require(mixFile)
+    }
+})

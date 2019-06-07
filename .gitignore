@@ -98,3 +98,4 @@ node_modules/*
 **/static/*
 **/static/*
 cache/*
+test_dynamic_webpack/*.css
